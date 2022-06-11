@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[62]:
+# In[1]:
 
 
 import numpy as np
@@ -13,14 +13,14 @@ import scipy
 from scipy import stats as st
 
 
-# In[63]:
+# In[2]:
 
 
 data=pd.read_csv('Final_Dataset_3.csv')
 print(data.head())
 
 
-# In[64]:
+# In[3]:
 
 
 feature_data_wateractual= data.drop(["WaterActual","DoughMoisture","Temperature","WetWeight","Zone1","Zone2","Zone3","Zone4","SteamDamper1","SteamDamper2","SteamDamper3","SteamDamper4"],axis=1)
@@ -45,7 +45,7 @@ feature_data_steamdamper4= data.drop(["BiscuitPasteActual","DoughMoisture","Temp
 feature_data_steamdamper4 = np.array(feature_data_steamdamper4)
 
 
-# In[65]:
+# In[4]:
 
 
 labels_wateractual = np.array(data['WaterActual'])
@@ -61,7 +61,7 @@ labels_steamdamper3 = np.array(data['SteamDamper3'])
 labels_steamdamper4 = np.array(data['SteamDamper4'])
 
 
-# In[66]:
+# In[5]:
 
 
 train_feature_data_wateractual, test_feature_data_wateractual, train_labels_wateractual, test_labels_wateractual = train_test_split(feature_data_wateractual, labels_wateractual, test_size = 0.25, random_state = 42)
@@ -77,7 +77,7 @@ train_feature_data_steamdamper3, test_feature_data_steamdamper3, train_labels_st
 train_feature_data_steamdamper4, test_feature_data_steamdamper4, train_labels_steamdamper4, test_labels_steamdamper4 = train_test_split(feature_data_steamdamper4, labels_steamdamper4, test_size = 0.25, random_state = 42)
 
 
-# In[67]:
+# In[6]:
 
 
 from sklearn.ensemble import RandomForestRegressor
@@ -110,7 +110,7 @@ Random_Forest_SteamDamper4 = RandomForestRegressor(n_estimators = 25, random_sta
 Random_Forest_SteamDamper4.fit(train_feature_data_steamdamper4, train_labels_steamdamper4);
 
 
-# In[68]:
+# In[7]:
 
 
 while True:
@@ -239,7 +239,7 @@ GRANLARITY = 0.5*(Granlarity1+Granlarity2)
 
 
 
-# In[69]:
+# In[8]:
 
 
 Input_WaterActual=np.array([[GLUTEN,SV,ASHCONTENT,AIA,BrokenStarch,MOISTURE,GRANLARITY,BiscuitPasteActual,ABCActual]])
@@ -281,12 +281,34 @@ Final_Prediction_SteamDamper4= Random_Forest_SteamDamper4.predict(Input_SteamDam
 SteamDamper4=10*round(Final_Prediction_SteamDamper4[0]/10)
 
 
-# In[70]:
+# In[10]:
 
 
 print("WaterActual:",round(WaterActual, 2),"\nDoughMoisture:",round(DoughMoisture*100,2),"%","\nZone1:",round(Zone1,2))
 print("Zone2:",round(Zone2,2),"\nZone3:",round(Zone3,2),"\nZone4:",round(Zone4,2),"\nSteamDamper1:",SteamDamper1)
-print("SteamDamper2:",SteamDamper2,"\nSteamDamper3:",SteamDamper3,"\n
+print("SteamDamper2:",SteamDamper2,"\nSteamDamper3:",SteamDamper3,"\nSteamDamper4:",SteamDamper4)
 
-SteamDamper4:",SteamDamper4)
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
 
